@@ -2,24 +2,1786 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS variables */
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-sans: 'Arial, Helvetica, sans-serif';
-  --font-mono: 'Courier New, monospace';
+/* ────────────────────────────────  
+   🌐 Global Reset for Responsiveness
+──────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  body.modal-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
   }
 }
 
-/* Base styles */
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+
+
+
+
+
+
+
+
+
+
+/* ────────────────────────────────  
+   🎨 Global Variables & Theme
+──────────────────────────────── */
+:root {
+  --bg: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  --text: white;
+  --accent: #00ffff;
+  --overlay: rgba(255, 255, 255, 0.05);
 }
+
+.light-mode {
+  --bg: linear-gradient(to bottom right, #f0f0f0, #dcdcdc, #c0c0c0);
+  --text: #222;
+  --accent: #0077ff;
+  --overlay: rgba(0, 0, 0, 0.05); 
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
+
+/* ────────────────────────────────  
+   🧱 Layout Grid
+──────────────────────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+/* ────────────────────────────────  
+   📦 Sidebar (Left)
+──────────────────────────────── */
+.sidebar.left {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 10px var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 93vh;
+  width: 55vh;
+  overflow: hidden;
+  align-self: start;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+
+/* ────────────────────────────────  
+   🖼 Banner Block
+──────────────────────────────── */
+.banner-block {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.wallpaper {
+  background: url('assets/wallpaper.jpg') center/cover no-repeat;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.wallpaper h1 {
+  font-size: clamp(16px, 3vw, 22px);
+  font-style: italic;
+  color: var(--accent);
+  margin: 0;
+  font-weight: 900;
+  text-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+/* ────────────────────────────────  
+   🧑 Avatar
+──────────────────────────────── */
+.avatar.overlap {
+  position: absolute;
+  bottom: -35px;
+  left: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  background: var(--bg);
+  cursor: pointer;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.avatar.overlap:hover {
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+/* ────────────────────────────────  
+   🏠 Name + Address
+──────────────────────────────── */
+.name {
+  font-size: clamp(18px, 4vw, 21px);
+  font-weight: 700;
+  margin: -5px 0 0;
+  background: linear-gradient(to right, #00ffff, #0077ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.address-overlay {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.location-pin {
+  width: 14px;
+  height: 14px;
+  stroke: var(--accent);
+  vertical-align: middle;
+}
+
+/* ────────────────────────────────  
+   ⏰ Timezone Overlay
+──────────────────────────────── */
+.wall-overlay {
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+/* ────────────────────────────────  
+   🔗 Icon Row
+──────────────────────────────── */
+.icon-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon-row a {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.icon-row a:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ────────────────────────────────  
+   📊 Summary Stats
+──────────────────────────────── */
+.summary-heading {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.summary-heading .summary-icon {
+  stroke: var(--accent);
+  vertical-align: middle;
+  margin-right: 1px; /* super tight */
+}
+
+/* Optional: Light mode override */
+body.light-mode .summary-icon {
+  stroke: #0077ff;
+}
+
+
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.stats strong {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--stats-number-color);
+  display: block;
+  margin-bottom: -20px;
+}
+
+.stats div {
+  background-color: var(--overlay);
+  padding: 8px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 0 5px var(--accent);
+}
+
+.stats div:hover {
+  transform: translateY(-5px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+/* ────────────────────────────────  
+   🧊 Overlay Modals
+──────────────────────────────── */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.overlay-content {
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 90vw;
+  animation: fadeIn 0.3s ease;
+}
+
+
+
+.overlay-content.large {
+  max-width: 600px;
+  padding: 15px 30px;
+  border-radius: 14px;
+  box-shadow: 0 0 24px rgba(0,0,0,0.4);
+}
+
+.overlay-content:hover {
+  transform: translateY(-5px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+.overlay-content.large:hover {
+  transform: translateY(-5px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+
+/* ────────────────────────────────  
+   📄 Resume Image
+──────────────────────────────── */
+.resume-img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px var(--accent);
+}
+
+
+
+/* ────────────────────────────────  
+   🧭 Modal Icons
+──────────────────────────────── */
+.modal-icons {
+  position: absolute;
+  top: -4px;
+  right: -35px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent); /* ✅ Theme-aware stroke */
+}
+
+.icon-btn:hover .icon-svg {
+  stroke: white; /* ✅ Clean hover contrast */
+  transform: scale(1.2);
+}
+
+
+
+
+/* ────────────────────────────────  
+   💼 LinkedIn Badge
+──────────────────────────────── */
+.custom-linkedin-badge {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px var(--accent);
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.linkedin-logo {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.badge-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0077b5;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: #0077b5;
+}
+
+.badge-title,
+.badge-school {
+  font-size: 14px;
+  margin: 0;
+}
+
+.custom-linkedin-badge .badge-title,
+.custom-linkedin-badge .badge-school {
+  color: rgb(0, 0, 0) !important;
+}
+
+.custom-linkedin-badge .badge-button {
+  color: rgb(255, 255, 255) !important;
+}
+
+.badge-button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #0077b5;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.badge-button:hover {
+  background: #dcdcdc;
+}
+
+.skillset {
+  margin-top: 12px;
+}
+
+.skillset-heading {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 6px;
+  margin-bottom: 6px;
+  
+}
+
+body.dark .skillset-heading {
+  color: white; /* stays white in dark mode */
+}
+
+.skillset-icon {
+  vertical-align: middle;
+  margin-right: 1px;
+  width: 16px;
+  height: 16px;
+  
+}
+
+
+.skillset-filter {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.skillset-filter button {
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skillset-filter button:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.skillset-filter button.active {
+  background: var(--accent);
+  color: white;
+}
+
+.skillset-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  padding: 0;
+  margin-top: 28px;
+  list-style: none;
+  justify-content: center;
+}
+
+.skillset-badges li {
+  background-color: var(--overlay);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.skillset-badges li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+/* ────────────────────────────────  
+   Right Column
+──────────────────────────────── */
+
+
+
+/* ─── Right Sidebar Layout ─── */
+.sidebar.right {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 10px var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%; /* ✅ Fit inside grid cell */
+  width: 55vh;
+  overflow: hidden;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+
+
+/* ─── Section Heading ─── */
+
+.section-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.section-heading span {
+  color: var(--text); /* ✅ Theme-aware text beside icon */
+}
+
+
+/* ─── Section Icon ─── */
+.section-icon {
+  stroke: var(--accent); /* ✅ Theme-aware icon stroke */
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* ─── List Styling ─── */
+.sidebar.right ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.sidebar.right li::before {
+  content: " ";
+  color: var(--accent);
+}
+
+/* ─── Text & Link Styling ─── */
+.sidebar.right p,
+.sidebar.right a {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+  text-decoration: none;
+}
+
+
+/* ─── Professional Interests ─── */
+.interests-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.interests-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 0;
+  color: var(--text);
+}
+
+/* 🔹 View All Icon Button */
+.view-all-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.view-all-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent);
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+/* ✅ Hover: icon turns white, background adapts to theme */
+.view-all-icon:hover {
+  background-color: var(--accent);
+}
+
+.view-all-icon:hover svg {
+  transform: scale(1.1);
+  stroke: white;
+}
+
+
+/* 🔹 Interest Tags Container */
+.interest-tags {
+  display: flex;
+  flex-wrap: nowrap;          /* ✅ One straight line */
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding-top: 3px;
+  overflow: hidden;           /* ✅ No scroll */
+}
+
+
+.interest-tags div {
+  width: 100px;               /* ✅ Wider than tall → vertical rectangle */
+  height: 60px;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  padding: 10px;
+  box-sizing: border-box;
+  line-height: 1.4;
+  white-space: normal;
+  background-color: var(--overlay);
+}
+
+.interest-tags div:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--bg);
+  color: var(--text);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  overflow-y: hidden;
+  max-height: 90vh;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  color: var(--text);
+  margin: 0;
+}
+
+
+.close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--accent); /* ✅ Default stroke color */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  background-color: var(--accent);
+  color: white; /* ✅ Hover stroke becomes white */
+}
+
+.close-btn svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover svg {
+  transform: scale(1.1);
+}
+
+
+
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 10px;
+}
+
+.interests-grid::-webkit-scrollbar {
+  width: 0;
+}
+
+.interests-grid li {
+  box-sizing: border-box;
+  background-color: var(--accent-bg);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--accent);
+  border: 1px solid var(--accent);
+  text-align: center;
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.interests-grid li:hover {
+  transform: translateY(-3px);
+}
+
+.interests-grid li strong {
+  font-size: 17px;
+}
+
+
+
+/* 🔹 Experience */
+.experience-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.experience-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 0;
+  color: var(--text);
+}
+
+.experience-tags {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.experience-tags li {
+  color: var(--text);
+  padding: 6px;
+  border-radius: 10px;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--accent);
+  text-align: center;
+  font-size: 14px;
+  background-color: var(--overlay);
+}
+
+.experience-tags li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns */
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-grid li {
+  background-color: var(--accent-bg); /* ✅ Theme-consistent box */
+  color: var(--text);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--accent);
+  text-align: center;
+  font-size: 13px;
+}
+
+.experience-grid li strong {
+  font-size: 17px;
+}
+
+.experience-grid li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+  background-color: var(--accent);  
+}
+
+
+/* ────────────────────────────────  
+   📄 COE Modal
+──────────────────────────────── */
+/* 🔸 COE Modal Overlay */
+#coe-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔸 COE Modal Container */
+.overlay-coe {
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 90vw;
+  animation: fadeIn 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.overlay-coe:hover {
+  transform: translateY(-5px);
+}
+
+/* 🔸 COE Image */
+.coe-img {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--accent);
+}
+
+/* 🔸 Inner Modal Content */
+.modal-coe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* 🔸 Close Button */
+.coe-btn {
+  position: absolute;
+  top: -9px;
+  right: -33px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+
+.coe-svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent);
+}
+
+.coe-btn:hover .coe-svg {
+  stroke: white; /* ✅ Clean hover contrast */
+  transform: scale(1.2);
+}
+
+
+
+
+
+
+/* 🔹 Certifications & Training */
+.ct-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.ct-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 0;
+  color: var(--text);
+}
+
+.ct-tags {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.ct-tags li {
+  color: var(--text);
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--theme-bg);
+  border: 1px solid var(--accent);
+  text-align: center;
+  font-size: 14px;
+  background-color: var(--overlay);
+}
+
+.ct-tags li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns */
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ct-grid li {
+  background-color: var(--accent-bg); /* ✅ Theme-consistent box */
+  color: var(--text);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--accent);
+  text-align: center;
+  font-size: 13px;
+}
+
+.ct-grid li strong {
+  font-size: 17px;
+}
+
+.ct-grid li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+  background-color: var(--accent);  
+}
+
+
+/* ────────────────────────────────  
+   📄 OJT Modal
+──────────────────────────────── */
+/* 🔸 OJT Modal Overlay */
+#ojt-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔸 OJT Modal Container */
+.overlay-ojt {
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 90vw;
+  animation: fadeIn 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.overlay-ojt:hover {
+  transform: translateY(-5px);
+}
+
+/* 🔸 OJT Image */
+.ojt-img {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--accent);
+}
+
+/* 🔸 Inner Modal Content */
+.modal-ojt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* 🔸 Close Button */
+.ojt-btn {
+  position: absolute;
+  top: -9px;
+  right: -33px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+
+.ojt-svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent);
+}
+
+.ojt-btn:hover .ojt-svg {
+  stroke: white; /* ✅ Clean hover contrast */
+  transform: scale(1.2);
+}
+
+
+/* ────────────────────────────────  
+   📄 EPAS Modal
+──────────────────────────────── */
+/* 🔸 COE Modal Overlay */
+#epas-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔸 EPAS Modal Container */
+.overlay-epas {
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 90vw;
+  animation: fadeIn 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.overlay-epas:hover {
+  transform: translateY(-5px);
+}
+
+/* 🔸 EPAS Image */
+.epas-img {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--accent);
+}
+
+/* 🔸 Inner Modal Content */
+.modal-epas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* 🔸 Close Button */
+.epas-btn {
+  position: absolute;
+  top: -9px;
+  right: -33px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+
+.epas-svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent);
+}
+
+.epas-btn:hover .epas-svg {
+  stroke: white; /* ✅ Clean hover contrast */
+  transform: scale(1.2);
+}
+
+
+
+
+/* 🔹 Social Links */
+.social-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 150px;
+  margin-bottom: 12px;
+}
+
+.social-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 0;
+  color: var(--text);
+}
+
+.social-tags {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+
+.social-tags li {
+  color: var(--text);
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--theme-bg);
+  text-align: center;
+  font-size: 14px;
+  
+}
+
+.social-tags li:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+.social-icon {
+  stroke: var(--text);
+  transition: stroke 0.3s ease;
+  width: 32px;
+  height: 32px;
+}
+
+.social-icon:hover {
+  stroke: var(--accent);
+  transition: stroke 0.3s ease;
+}
+
+
+/* ────────────────────────────────  
+   Main
+──────────────────────────────── */
+.main-content {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.main-content h2 {
+  font-size: 20px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+
+.about-card {
+  background: var(--overlay);
+  padding: 20px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px var(--accent);
+  text-align: justify;
+}
+
+
+
+.about-card p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-card:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 10px;
+}
+
+
+.project-card {
+  background: var(--overlay);
+  padding: 10px;
+  padding-top: 1px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--accent);
+  text-align: center;
+  font-size: 13px;
+}
+
+.project-card:hover {
+  transform: translateY(-3px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.project-grid-modal {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding-right: 10px;
+}
+
+.project-grid-modal::-webkit-scrollbar {
+  width: 0;
+}
+
+.project-grid-modal li {
+  box-sizing: border-box;
+  background-color: var(--accent-bg);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--accent);
+  border: 1px solid var(--accent);
+  text-align: center;
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.project-grid-modal li:hover {
+  transform: translateY(-3px);
+}
+
+.project-grid-modal li strong {
+  font-size: 17px;
+}
+
+.modal-project {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.project-icon {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #0f0f0f; /* dark theme */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  transition: opacity 0.9s ease;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #444;
+  border-top-color: #00ffcc;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+  /* 🔸 Fade-in Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+
+  
+
+/* ────────────────────────────────  
+   📱 Responsive: Desktop
+──────────────────────────────── */
+@media (min-width: 1025px) {
+  .grid-layout {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+
+  .sidebar.left,
+  .sidebar.right {
+    display: block;
+  }
+
+  .resume-img {
+    max-width: 400px;
+  }
+
+  .custom-linkedin-badge {
+    max-width: 320px;
+  }
+
+  .overlay-content.large {
+    max-width: 600px;
+    padding: 15px 18px;
+  }
+}
+
+
+
+
+/* ────────────────────────────────  
+   📱 Responsive: Mobile
+──────────────────────────────── */
+
+@media (max-width: 768px) {
+  .grid-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .sidebar.left,
+  .sidebar.right,
+  .main-content {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    overflow: visible;
+  }
+
+  .sidebar.left,
+  .sidebar.right {
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--accent);
+    
+  }
+
+  .wallpaper {
+    height: 100px;
+    padding-top: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+  }
+
+
+  .avatar.overlap {
+    width: 100px;
+    height: 100px;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 2px;
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+
+
+  .name-block {
+    text-align: center;
+  }
+
+  .address-overlay {
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .icon-row {
+    justify-content: center;
+    gap: 10px;
+  }
+
+
+  .stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.stats strong {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--stats-number-color);
+  display: block;
+  margin-bottom: -20px;
+}
+
+.stats div {
+  background-color: var(--overlay);
+  padding: 8px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 0 5px var(--accent);
+}
+
+.stats div:hover {
+  transform: translateY(-5px); /* ✅ Subtle hover lift */
+  transition: all 0.3s ease;
+}
+
+
+
+  .overlay-content {
+    padding: 16px;
+    max-width: 95vw;
+  }
+
+  .resume-img {
+    max-width: 70vw;
+  }
+
+  .overlay-content.large {
+    max-width: 95vw;
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .custom-linkedin-badge {
+    padding: 16px;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .badge-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .badge-name {
+    font-size: 16px;
+  }
+
+  .badge-title,
+  .badge-school {
+    font-size: 13px;
+  }
+
+  .badge-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .linkedin-logo {
+    width: 64px;
+  }
+
+  .badge-info {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .skillset-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .skillset-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .icon-row {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+/* 🔹 Interests Grid: Single column on small screens */
+@media (max-width: 600px) {
+  .interests-grid {
+    grid-template-columns: 1fr;
+    padding: 8px;
+    gap: 12px;
+    max-height: 400px;
+  }
+
+  .interests-grid li {
+    font-size: 12px;
+    padding: 16px;
+  }
+
+  .interests-grid li strong {
+    font-size: 15px;
+  }
+}
+
+/* 🔹 Modal Containers: Full width on mobile */
+@media (max-width: 600px) {
+  .overlay-coe,
+  .overlay-ojt,
+  .overlay-epas {
+    width: 95vw;
+    max-width: 400px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* 🔹 Modal Images: Scale down for mobile */
+@media (max-width: 600px) {
+  .coe-img,
+  .ojt-img,
+  .epas-img {
+    max-width: 400px;
+    box-shadow: 0 2px 6px var(--accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+  height: calc(100dvh - 32px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari, Edge */
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+}
+
+@media (max-width: 768px) {
+  html, body {
+    -ms-overflow-style: none;     /* IE and Edge */
+    scrollbar-width: none;        /* Firefox */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Opera */
+  }
+
+}
+
+
+
+
+
+
+/* ────────────────────────────────  
+   📱 Responsive: Small Mobile
+──────────────────────────────── */
+@media (max-width: 480px) {
+  .overlay-content {
+    padding: 12px;
+  }
+
+  .resume-img {
+    max-width: 100%;
+  }
+
+  .icon-btn {
+    font-size: 16px;
+  }
+
+  .badge-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillset-filter button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .skillset-badges {
+    gap: 6px;
+  }
+
+  .icon-row a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+
