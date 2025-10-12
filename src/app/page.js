@@ -1,103 +1,1150 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main>
+     <>
+  {/* 🔹 Meta & Title */}
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian M. Mongoc | Portfolio</title>
+  {/* 🔹 Stylesheet */}
+  <link rel="stylesheet" href="style.css" />
+  {/* 🔹 LinkedIn Badge Script (optional) */}
+  {/* 🔹 Main Grid Layout */}
+  <div className="grid-layout">
+    {/* 🔹 Left Sidebar */}
+    <aside className="sidebar left">
+      {/* 🔸 Banner Section */}
+      <div className="banner-block">
+        <div className="wallpaper">
+          <h1>Computer Engineer</h1>
+        </div>
+        <div className="wall-overlay">
+          <span id="local-time">Loading...</span>
+        </div>
+        <img
+          src="assets/avatar-dark.jpg"
+          className="avatar overlap"
+          id="theme-toggle"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </div>
+      {/* 🔸 Name & Location */}
+      <div className="name-block">
+        <h2 className="name">Christian M. Mongoc</h2>
+        <div className="address-overlay">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="location-pin"
+            viewBox="0 0 24 24"
+            stroke="black"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10s6-5.686 6-10a6 6 0 10-12 0c0 4.314 6 10 6 10z"
+            />
+          </svg>
+          <span>Mulanay Quezon, Philippines</span>
+        </div>
+      </div>
+      {/* 🔸 Action Buttons */}
+      <div className="icon-row">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=christianmongoc9@gmail.com"
+          target="_blank"
+        >
+          Send Email
+        </a>
+        <a href="assets/resume-image.jpg" className="trigger-resume">
+          View Resume
+        </a>
+        <a href="#" className="trigger-linkedin">
+          View LinkedIn
+        </a>
+      </div>
+      {/* 🔸 Summary Stats */}
+      <div className="summary">
+        <h3 className="summary-heading">
+          <svg
+            className="summary-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width={16}
+            height={16}
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <line x1={4} y1={20} x2={4} y2={12} />
+            <line x1={8} y1={20} x2={8} y2={8} />
+            <line x1={12} y1={20} x2={12} y2={4} />
+          </svg>
+          <span>Summary</span>
+        </h3>
+      </div>
+      <div className="stats">
+        <div>
+          <strong>2</strong>
+          <br />
+          Years Experience
+        </div>
+        <div>
+          <strong>0</strong>
+          <br />
+          Projects Completed
+        </div>
+        <div>
+          <strong>15</strong>
+          <br />
+          Technical Stack
+        </div>
+      </div>
+      {/* 🔸 Skillset Section */}
+      <div className="skillset">
+        <h3 className="skillset-heading">
+          <svg
+            className="skillset-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 5h18v12H3V5zm0 12h18v2H3v-2z"
+            />
+          </svg>
+          <span>Skillset</span>
+        </h3>
+      </div>
+      {/* Category Filters */}
+      <div className="skillset-filter">
+        <button data-group="all" className="active">
+          All
+        </button>
+        <button data-group="languages">Languages</button>
+        <button data-group="frameworks">Frameworks</button>
+        <button data-group="tools">Tools</button>
+        <button data-group="platforms">Platforms</button>
+      </div>
+      {/* Categorized Badges */}
+      <ul className="skillset-badges">
+        <li data-group="languages">HTML</li>
+        <li data-group="languages">CSS</li>
+        <li data-group="languages">JavaScript</li>
+        <li data-group="languages">Python</li>
+        <li data-group="languages">C++</li>
+        <li data-group="frameworks">Next.js</li>
+        <li data-group="frameworks">Tailwind CSS</li>
+        <li data-group="tools">VS Code</li>
+        <li data-group="tools">GitHub</li>
+        <li data-group="tools">Figma</li>
+        <li data-group="tools">Microsoft Office</li>
+        <li data-group="tools">Google Suite</li>
+        <li data-group="platforms">Windows</li>
+        <li data-group="platforms">PowerShell</li>
+        <li data-group="platforms">SketchUp</li>
+      </ul>
+    </aside>
+    {/* 🔹 Main Content */}
+    <main className="main-content">
+      <section className="section-about" id="about">
+        <div className="about-header">
+          <h2 className="section-heading">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle stroke="var(--accent)" cx={12} cy={7} r={4} />
+              <path
+                stroke="var(--accent)"
+                d="M5.5 21c0-3.6 3-6.5 6.5-6.5s6.5 2.9 6.5 6.5"
+              />
+            </svg>
+            <span>About Me</span>
+          </h2>
+        </div>
+        <div className="about-grid">
+          <div className="about-card">
+            <p>
+              I’m Christian Mongoc, a Computer Engineering graduate from
+              Southern Luzon State University. I’m hardworking, adaptable, and
+              eager to grow in the fields of IT, software development, or
+              cybersecurity. I’ve learned programming, hardware integration, and
+              technical documentation through my education and past experience.
+            </p>
+            <p>
+              Even though I don’t have direct experience in the industry yet, I
+              believe in learning by doing. I’m committed to continuous learning
+              and I’m always open to new challenges. Growth for me means staying
+              curious, practicing consistently, and being open to feedback. I’m
+              committed to improving my skills and becoming better with every
+              project I take on.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section-project" id="projects">
+        <div className="project-header">
+          <h2 className="section-heading">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path
+                stroke="var(--accent)"
+                d="M3 7a2 2 0 0 1 2-2h5l2 2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
+              />
+              <circle cx={12} cy={14} r={2} />
+              <path
+                stroke="var(--accent)"
+                d="M12 12v-1m0 5v-1m1.5-1.5h1m-5 0h1m2.12-1.88l.71-.71m-3.54 3.54l.71-.71m0-2.12l-.71-.71m3.54 3.54l-.71-.71"
+              />
+            </svg>
+            <span>Projects</span>
+          </h2>
+          <button
+            className="view-all-icon"
+            onclick="document.getElementById('project-modal').style.display='flex'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
               width={20}
               height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+              fill="none"
+              stroke="white"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect
+                x={1}
+                y={1}
+                width={18}
+                height={18}
+                rx={4}
+                ry={4}
+                stroke="var(--accent)"
+              />
+              <line x1={10} y1={6} x2={10} y2={14} />
+              <line x1={6} y1={10} x2={14} y2={10} />
+            </svg>
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="project-grid">
+          <div className="project-card">
+            <h3>Website Design and Development</h3>
+            <span> September 2023</span>
+          </div>
+          <div className="project-card">
+            <h3>
+              Design and Implementation of Hotel Management Network Design
+            </h3>
+            <span> June 2024</span>
+          </div>
+          <div className="project-card">
+            <h3>Application Design and Development</h3>
+            <span> June 2024</span>
+          </div>
+          <div className="project-card">
+            <h3>
+              A Wearable Device to Assist Blind Individuals in Avoiding Indoor
+              Obstructions
+            </h3>
+            <span> July 2025</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    {/* 🔹 Right Sidebar */}
+    <aside className="sidebar right">
+      <div className="interests-header">
+        <h3 className="section-heading">
+          <svg
+            className="section-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h10M4 18h16"
+            />
+          </svg>
+          <span>Professional Interests</span>
+        </h3>
+        {/* 🔹 Icon-only button */}
+        <button
+          className="view-all-icon"
+          onclick="document.getElementById('interest-modal').style.display='flex'"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={20}
+            height={20}
+            fill="none"
+            stroke="white"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect
+              x={1}
+              y={1}
+              width={18}
+              height={18}
+              rx={4}
+              ry={4}
+              stroke="var(--accent)"
+            />
+            <line x1={10} y1={6} x2={10} y2={14} />
+            <line x1={6} y1={10} x2={14} y2={10} />
+          </svg>
+        </button>
+      </div>
+      <div className="interest-tags">
+        <div>IT Support</div>
+        <div>System Development</div>
+        <div>Cybersecuity</div>
+      </div>
+      <div className="experience-header">
+        <h3 className="section-heading">
+          <svg
+            className="section-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 9v12h12V9M6 9l6-6 6 6"
+            />
+          </svg>
+          <span>Work Experience</span>
+        </h3>
+        {/* 🔹 Icon-only button */}
+        <button
+          className="view-all-icon"
+          onclick="document.getElementById('experience-modal').style.display='flex'"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={20}
+            height={20}
+            fill="none"
+            stroke="white"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect
+              x={1}
+              y={1}
+              width={18}
+              height={18}
+              rx={4}
+              ry={4}
+              stroke="var(--accent)"
+            />
+            <line x1={10} y1={6} x2={10} y2={14} />
+            <line x1={6} y1={10} x2={14} y2={10} />
+          </svg>
+        </button>
+      </div>
+      <ul className="experience-tags">
+        <li>Senior Technical Officer</li>
+      </ul>
+      <div className="ct-header">
+        <h3 className="section-heading">
+          <svg
+            className="section-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
+            />
+          </svg>
+          <span>Certifications &amp; Training</span>
+        </h3>
+        {/* 🔹 Icon-only button */}
+        <button
+          className="view-all-icon"
+          onclick="document.getElementById('ct-modal').style.display='flex'"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={20}
+            height={20}
+            fill="none"
+            stroke="white"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect
+              x={1}
+              y={1}
+              width={18}
+              height={18}
+              rx={4}
+              ry={4}
+              stroke="var(--accent)"
+            />
+            <line x1={10} y1={6} x2={10} y2={14} />
+            <line x1={6} y1={10} x2={14} y2={10} />
+          </svg>
+        </button>
+      </div>
+      <ul className="ct-tags">
+        <li>On-the Job Training</li>
+        <li>EPAS NC II</li>
+      </ul>
+      <div className="social-header">
+        <h3 className="section-heading">
+          <svg
+            className="section-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10 14a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"
+            />
+            <path
+              stroke="var(--accent)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M14 10a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"
+            />
+          </svg>
+          <span>Social Links</span>
+        </h3>
+      </div>
+      <ul className="social-tags">
+        <li>
+          <a
+            href="https://www.facebook.com/christian.m.mongoc"
+            target="_blank"
+            aria-label="Facebook"
+          >
+            <svg
+              className="social-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/y0urtantan?igsh=Zzlpd2kyOW84OTho"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <svg
+              className="social-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <rect x={2} y={2} width={20} height={20} rx={5} ry={5} />
+              <circle cx={12} cy={12} r={3} />
+              <circle cx="17.5" cy="6.5" r={1} />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.tiktok.com/@y0urtantan?_t=ZS-90NiEPyZAKD&_r=1"
+            target="_blank"
+            aria-label="TikTok"
+          >
+            <svg
+              className="social-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M9 3v12.6a2.4 2.4 0 1 1-2.4-2.4H6a4.8 4.8 0 1 0 4.8 4.8V8.2c1.2.8 2.6 1.3 4 1.3V6.2c-1.6 0-3-1.3-3-3H9z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.threads.com/@y0urtantan"
+            target="_blank"
+            aria-label="Threads"
+          >
+            <svg
+              className="social-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={32}
+              height={32}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2c5.5 0 9 3.5 9 9s-3.5 9-9 9-9-3.5-9-9 3.5-9 9-9z" />
+              <path d="M12 7c2.5 0 4 1.5 4 3.5s-1.5 3.5-4 3.5c-1.5 0-2.5-1-2.5-2.5S10.5 9 12 9c1 0 1.5.5 1.5 1.5" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/@y0urtantanyt"
+            target="_blank"
+            aria-label="YouTube"
+          >
+            <svg
+              className="social-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M10 15l5.2-3L10 9v6z" />
+              <rect x={2} y={6} width={20} height={12} rx={3} ry={3} />
+            </svg>
+          </a>
+        </li>
+      </ul>
+      {/* 🔹 Resume Modal */}
+      <div id="resume-modal" className="overlay">
+        <div className="overlay-content">
+          {/* 🔸 Modal Icons */}
+          <div className="modal-icons">
+            {/* ❌ Close Button */}
+            <button className="icon-btn close-overlay" title="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            {/* ⬇️ Download Button */}
+            <a
+              href="assets/resume-image.jpg"
+              download=""
+              className="icon-btn download-icon"
+              title="Download Resume"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"
+                />
+              </svg>
+            </a>
+          </div>
+          {/* 🔸 Resume Image */}
+          <div className="resume-image-container">
+            <img
+              src="assets/resume-image.jpg"
+              alt="Christian Mongoc Resume"
+              className="resume-img"
+            />
+          </div>
+        </div>
+      </div>
+      {/* 🔹 LinkedIn Modal */}
+      <div id="linkedin-modal" className="overlay">
+        <div className="overlay-content large">
+          {/* 🔸 Modal Icons */}
+          <div className="modal-icons">
+            <button
+              className="icon-btn close-overlay"
+              onclick="closeLinkedInModal()"
+              title="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          {/* 🔸 LinkedIn Badge */}
+          <div className="custom-linkedin-badge">
+            {/* 🔹 Logo */}
+            <div className="badge-header">
+              <img
+                src="assets/linkedin-logo.jpg"
+                alt="LinkedIn Logo"
+                className="linkedin-logo"
+              />
+            </div>
+            {/* 🔹 Profile Info */}
+            <div className="badge-body">
+              <img
+                src="assets/avatar-light.jpg"
+                alt="Christian Mongoc"
+                className="badge-avatar"
+              />
+              <div className="badge-info">
+                <h2 className="badge-name">Christian Mongoc</h2>
+                <p className="badge-title">Computer Engineering Graduate</p>
+                <p className="badge-school">Southern Luzon State University</p>
+              </div>
+            </div>
+            {/* 🔹 Profile Button */}
+            <div className="badge-footer">
+              <a
+                href="https://www.linkedin.com/in/christian-mongoc-340012377/"
+                target="_blank"
+                className="badge-button"
+              >
+                View Profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 🔹 Interests Modal */}
+      <div id="interest-modal" className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3>
+              <svg
+                className="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  stroke="var(--accent)"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h10M4 18h16"
+                />
+              </svg>
+              Professional Interests
+            </h3>
+            <button
+              className="close-btn"
+              onclick="document.getElementById('interest-modal').style.display='none'"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Box outline stays accent-colored */}
+                <rect
+                  x={2}
+                  y={2}
+                  width={20}
+                  height={20}
+                  rx={4}
+                  ry={4}
+                  stroke="var(--accent)"
+                  fill="transparent"
+                />
+                {/* Minus sign follows currentColor (controlled by CSS) */}
+                <line x1={8} y1={12} x2={16} y2={12} stroke="currentColor" />
+              </svg>
+            </button>
+          </div>
+          <ul className="interests-grid">
+            <li>
+              <strong>IT Support Associate</strong>
+              <br />
+              Assisting users with basic troubleshooting, software installation,
+              and hardware setup
+              <br />
+            </li>
+            <li>
+              <strong>Junior System Developer</strong>
+              <br />
+              Supporting development teams in coding, testing, and debugging
+              applications
+              <br />
+            </li>
+            <li>
+              <strong>Cybersecurity Trainee</strong>
+              <br />
+              Learning threat detection, secure coding, and basic network
+              protection techniques
+              <br />
+            </li>
+            <li>
+              <strong>Web Development Intern</strong>
+              <br />
+              Assisting in building responsive websites using HTML, CSS, and
+              JavaScript
+              <br />
+            </li>
+            <li>
+              <strong>Virtual Assistant</strong>
+              <br />
+              Handling admin tasks like email management, scheduling, and
+              document formatting
+              <br />
+            </li>
+            <li>
+              <strong>Freelance Web Developer</strong>
+              <br />
+              Building responsive websites and user interfaces for clients
+              across various industries
+              <br />
+            </li>
+            <li>
+              <strong>Data Encoder</strong>
+              <br />
+              Performing accurate data entry and maintaining digital records
+              <br />
+            </li>
+            <li>
+              <strong>Junior QA Tester</strong>
+              <br />
+              Executing test cases and reporting bugs to improve software
+              quality
+              <br />
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* 🔹 Experience Modal */}
+      <div id="experience-modal" className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3>
+              {" "}
+              <svg
+                className="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  stroke="var(--accent)"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 9v12h12V9M6 9l6-6 6 6"
+                />
+              </svg>
+              Work Experience
+            </h3>
+            <button
+              className="close-btn"
+              onclick="document.getElementById('experience-modal').style.display='none'"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Box outline stays accent-colored */}
+                <rect
+                  x={2}
+                  y={2}
+                  width={20}
+                  height={20}
+                  rx={4}
+                  ry={4}
+                  stroke="var(--accent)"
+                  fill="transparent"
+                />
+                {/* Minus sign follows currentColor (controlled by CSS) */}
+                <line x1={8} y1={12} x2={16} y2={12} stroke="currentColor" />
+              </svg>
+            </button>
+          </div>
+          <ul className="experience-grid">
+            <li className="trigger-coe">
+              <strong>Senior Technical Officer</strong>
+              <br />
+              HELP Entrepreneurs Launch Plentitude Foundation Inc.
+              <br />
+              June 11, 2018-August 21, 2020
+              <br />
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* 🔸 Modal COE */}
+      <div id="coe-modal" className="overlay">
+        <div className="overlay-coe">
+          <div className="modal-coe">
+            {/* ❌ Close Button */}
+            <button className="coe-btn close-overlay" title="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="coe-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            {/* 🔸 COE Image */}
+            <div className="coe-image-container">
+              <img
+                src="assets/coe-image.jpg"
+                alt="Christian Mongoc COE"
+                className="coe-img"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 🔹 Certifications Modal */}
+      <div id="ct-modal" className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3>
+              <svg
+                className="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  stroke="var(--accent)"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
+                />
+              </svg>
+              Certifications &amp; Training
+            </h3>
+            <button
+              className="close-btn"
+              onclick="document.getElementById('ct-modal').style.display='none'"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Box outline stays accent-colored */}
+                <rect
+                  x={2}
+                  y={2}
+                  width={20}
+                  height={20}
+                  rx={4}
+                  ry={4}
+                  stroke="var(--accent)"
+                  fill="transparent"
+                />
+                {/* Minus sign follows currentColor (controlled by CSS) */}
+                <line x1={8} y1={12} x2={16} y2={12} stroke="currentColor" />
+              </svg>
+            </button>
+          </div>
+          <ul className="ct-grid">
+            <li className="trigger-ojt">
+              <strong>On-the Job Training</strong>
+              <br />
+              at LGU Mulanay, IT Department
+              <br />
+              July 8-August 16, 2024
+              <br />
+            </li>
+            <li className="trigger-epas">
+              <strong>
+                Electronic Products Assembly &amp; Servicing NC II
+              </strong>
+              <br />
+              at TESDA, BPTI
+              <br />
+              June 26-September 13, 2017
+              <br />
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* 🔸 Modal OJT */}
+      <div id="ojt-modal" className="overlay">
+        <div className="overlay-ojt">
+          <div className="modal-ojt">
+            {/* ❌ Close Button */}
+            <button className="ojt-btn close-overlay" title="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="ojt-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            {/* 🔸 OJT Image */}
+            <div className="ojt-image-container">
+              <img
+                src="assets/ojt-image.jpg"
+                alt="Christian Mongoc OJT  Certificate"
+                className="ojt-img"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 🔸 Modal EPAS */}
+      <div id="epas-modal" className="overlay">
+        <div className="overlay-epas">
+          <div className="modal-epas">
+            {/* ❌ Close Button */}
+            <button className="epas-btn close-overlay" title="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="epas-svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            {/* 🔸 EPAS Image */}
+            <div className="epas-image-container">
+              <img
+                src="assets/epas-image.jpg"
+                alt="Christian Mongoc EPAS Certicate"
+                className="epas-img"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* 🔹 Project Modal */}
+      <div id="project-modal" className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h3 className="modal-project">
+              <svg
+                className="project-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path
+                  stroke="var(--accent)"
+                  d="M3 7a2 2 0 0 1 2-2h5l2 2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
+                />
+                <circle cx={12} cy={14} r={2} />
+                <path
+                  stroke="var(--accent)"
+                  d="M12 12v-1m0 5v-1m1.5-1.5h1m-5 0h1m2.12-1.88l.71-.71m-3.54 3.54l.71-.71m0-2.12l-.71-.71m3.54 3.54l-.71-.71"
+                />
+              </svg>
+              Projects
+            </h3>
+            <button
+              className="close-btn"
+              onclick="document.getElementById('project-modal').style.display='none'"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Box outline stays accent-colored */}
+                <rect
+                  x={2}
+                  y={2}
+                  width={20}
+                  height={20}
+                  rx={4}
+                  ry={4}
+                  stroke="var(--accent)"
+                  fill="transparent"
+                />
+                {/* Minus sign follows currentColor (controlled by CSS) */}
+                <line x1={8} y1={12} x2={16} y2={12} stroke="currentColor" />
+              </svg>
+            </button>
+          </div>
+          <ul className="project-grid-modal">
+            <li>
+              <strong>
+                Design and Implementation of Hotel Management Network Design
+              </strong>
+              <br />
+              Developed a functional website applying frontend and backend
+              principles using modern web tools
+              <br />
+              <br />
+              <b>
+                Subject: Online Technologies
+                <br />
+                Date: September 2023
+              </b>
+              <br />
+            </li>
+            <li>
+              <strong>Website Design and Development</strong>
+              <br />
+              Created a secure and scalable network layout for hotel operations,
+              including topology planning and device configuration
+              <br />
+              <br />
+              <b>
+                Subject: Computer Networks and Security
+                <br />
+                Date: June 2024
+              </b>
+              <br />
+            </li>
+            <li>
+              <strong>Application Design and Development</strong>
+              <br />
+              Designed a desktop application with emphasis on UI/UX, modular
+              logic, and system flow
+              <br />
+              <br />
+              <b>
+                Subject: Software Design and Development
+                <br />
+                Date: June 2024
+              </b>
+              <br />
+            </li>
+            <li>
+              <strong>
+                A Wearable Device to Assist Blind Individuals in Avoiding Indoor
+                Obstructions
+              </strong>
+              <br />
+              Engineered a prototype wearable using sensors and microcontrollers
+              to help visually impaired users navigate indoor spaces
+              <br />
+              <br />
+              <b>
+                Subject: CPE Practice and Design 2
+                <br />
+                Date: July 2025
+              </b>
+              <br />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="loading-screen">
+        <div className="spinner" />
+        <p className="loading-text">LEARN BY DOING</p>
+      </div>
+      {/* 🔹 Scripts */}
+    </aside>
+  </div>
+</>
+
+    </main>
   );
 }
