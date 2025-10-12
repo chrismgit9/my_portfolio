@@ -1,6 +1,6 @@
 {
   "name": "my_portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,7 +17,6 @@
     "postcss": "^8.4.24",
     "autoprefixer": "^10.4.21"
   },
-  "keywords": [],
   "author": "Christian M. Mongoc",
   "license": "MIT"
 }
