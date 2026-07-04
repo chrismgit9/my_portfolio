@@ -25,6 +25,8 @@ avatar.addEventListener('click', () => {
 
 
 
+
+
 /* ────────────────────────────────  
    ⏰ Real-Time Manila Clock
 ──────────────────────────────── */
@@ -152,6 +154,29 @@ closecoeBtn.addEventListener('click', () => {
   unlockScroll();
 });
 
+
+/* ────────────────────────────────  
+   📄 CSE Modal Logic
+──────────────────────────────── */
+
+// Get modal elements
+const cseModal = document.getElementById('cse-modal');
+const closecseBtn = document.querySelector('#cse-modal .close-overlay');
+const cseLink = document.querySelector('.trigger-cse');
+
+// 🔸 Open modal on link click
+cseLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  cseModal.style.display = 'flex';
+  lockScroll();
+});
+
+// 🔸 Close modal on icon click
+closecseBtn.addEventListener('click', () => {
+  cseModal.style.display = 'none';
+  unlockScroll();
+});
+
 /* ────────────────────────────────  
    📄 OJT Modal Logic
 ──────────────────────────────── */
@@ -228,6 +253,12 @@ window.addEventListener('load', () => {
       loader.style.display = 'none';
     }, 600); // fade duration
   }, 1200); // delay before fade starts
+});
+
+
+document.querySelectorAll('.overlay').forEach(modal => {
+  modal.addEventListener('wheel', e => e.stopPropagation());
+  modal.addEventListener('touchmove', e => e.stopPropagation());
 });
 
 

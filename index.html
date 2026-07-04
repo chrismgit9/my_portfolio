@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Christian M. Mongoc | Portfolio</title>
+  <link rel="icon" href="./assets/avatar-light.png" type="image/png" />
 
   <!-- 🔹 Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -63,7 +64,7 @@
 
     <div class="stats">
       <div><strong>2</strong><br />Years Experience</div>
-      <div><strong>0</strong><br />Projects Completed</div>
+      <div><strong>4</strong><br />Projects Completed</div>
       <div><strong>15</strong><br />Technical Stack</div>
     </div>
 
@@ -160,13 +161,8 @@
   <div class="project-grid">
 
     <div class="project-card">
-      <h3>Website Design and Development</h3>
-      <span> September 2023</span>
-    </div>
-
-    <div class="project-card">
-      <h3>Design and Implementation of Hotel Management Network Design</h3>
-      <span> June 2024</span>
+      <h3>A Wearable Device to Assist Blind Individuals in Avoiding Indoor Obstructions</h3>
+      <span> July 2025</span>
     </div>
 
     <div class="project-card">
@@ -175,9 +171,20 @@
     </div>
 
     <div class="project-card">
-      <h3>A Wearable Device to Assist Blind Individuals in Avoiding Indoor Obstructions</h3>
-      <span> July 2025</span>
+      <h3>Design and Implementation of Hotel Management Network Design</h3>
+      <span> June 2024</span>
     </div>
+
+    <div class="project-card">
+      <h3>Website Design and Development</h3>
+      <span> September 2023</span>
+    </div>
+
+    
+
+    
+
+    
 
   </div>
 </section>
@@ -262,8 +269,9 @@
   </div>
 
 <ul class="ct-tags">
+      <li>CSE Professional</li>
       <li>On-the Job Training</li>
-      <li>EPAS NC II</li>
+      <li>EPAS NC II </li>
     </ul>
 
 
@@ -514,6 +522,8 @@
       </button>
     </div>
     <ul class="ct-grid">
+      <li class="trigger-cse">
+      <strong>Career Service Professional Eligibility</strong><br>at Lucena City<br>March 08, 2026</br></li>
      <li class="trigger-ojt">
       <strong>On-the Job Training</strong><br>at LGU Mulanay, IT Department<br>July 8-August 16, 2024</br></li>
      <li class="trigger-epas">
@@ -521,6 +531,28 @@
     </ul>
   </div>
 </div>
+
+
+
+<!-- 🔸 Modal CSE -->
+   <div id="cse-modal" class="overlay">
+    <div class="overlay-cse">
+      <div class="modal-cse">
+        <!-- ❌ Close Button -->
+        <button class="cse-btn close-overlay" title="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" class="cse-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+      <!-- 🔸 CSE Image -->
+      <div class="cse-image-container">
+        <img src="assets/cse-image.jpg" alt="Christian Mongoc CSE Rating" class="cse-img" />
+      </div>
+    </div>
+  </div>
+   </div>
 
 <!-- 🔸 Modal OJT -->
    <div id="ojt-modal" class="overlay">
@@ -588,22 +620,25 @@
       </button>
     </div>
     <ul class="project-grid-modal">
-      <li><strong>Design and Implementation of Hotel Management Network Design</strong>
-        <br>Developed a functional website applying frontend and backend principles using modern web tools
-           <br><br><b>Subject: Online Technologies
-           <br>Date: September 2023</b></br></li>
-      <li><strong>Website Design and Development</strong>
-        <br>Created a secure and scalable network layout for hotel operations, including topology planning and device configuration
-           <br><br><b>Subject: Computer Networks and Security
-           <br>Date: June 2024</b></br></li>
-      <li><strong>Application Design and Development</strong>
-        <br>Designed a desktop application with emphasis on UI/UX, modular logic, and system flow
-           <br><br><b>Subject: Software Design and Development
-           <br>Date: June 2024</b></br></li>
       <li><strong>A Wearable Device to Assist Blind Individuals in Avoiding Indoor Obstructions</strong>
         <br>Engineered a prototype wearable using sensors and microcontrollers to help visually impaired users navigate indoor spaces
            <br><br><b>Subject: CPE Practice and Design 2
            <br>Date: July 2025</b></br></li>
+      <li><strong>Application Design and Development</strong>
+        <br>Designed a desktop application with emphasis on UI/UX, modular logic, and system flow
+           <br><br><b>Subject: Software Design and Development
+           <br>Date: June 2024</b></br></li>
+      <li><strong>Website Design and Development</strong>
+        <br>Created a secure and scalable network layout for hotel operations, including topology planning and device configuration
+           <br><br><b>Subject: Computer Networks and Security
+           <br>Date: June 2024</b></br></li>
+      <li><strong>Design and Implementation of Hotel Management Network Design</strong>
+        <br>Developed a functional website applying frontend and backend principles using modern web tools
+           <br><br><b>Subject: Online Technologies
+           <br>Date: September 2023</b></br></li>
+      
+      
+      
     </ul>
   </div>
 </div>
