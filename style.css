@@ -1769,7 +1769,8 @@ body.dark .skillset-heading {
 @media (max-width: 600px) {
   .overlay-coe,
   .overlay-ojt,
-  .overlay-epas {
+  .overlay-epas,
+  .overlay-cse {
     width: 95vw;
     max-width: 300px;
     padding: 12px;
