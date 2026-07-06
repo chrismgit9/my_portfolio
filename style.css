@@ -1105,7 +1105,7 @@ body.dark .skillset-heading {
 .cse-img {
   display: block;
   width: 100%;
-  max-width: 390px;
+  max-width: 350px;
   height: auto;
   object-fit: contain;
   border-radius: 6px;
