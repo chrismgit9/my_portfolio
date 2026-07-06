@@ -1693,6 +1693,10 @@ body.dark .skillset-heading {
     max-width: 50vw;
   }
 
+  .cse-img {
+    max-width: 50vw;
+  }
+
   .overlay-content.large {
     max-width: 95vw;
     padding: 16px;
