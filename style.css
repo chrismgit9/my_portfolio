@@ -1830,6 +1830,10 @@ body.dark .skillset-heading {
     max-width: 100%;
   }
 
+  .cse-img {
+    max-width: 100%;
+  }
+
   .icon-btn {
     font-size: 16px;
   }
